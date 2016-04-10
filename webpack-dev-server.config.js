@@ -44,9 +44,10 @@ var config = {
     loaders: [
       {
         test: /\.(js|jsx)$/, 
-        loaders: ['babel-loader'], 
+        loader:'babel-loader?presets[]=es2015&presets[]=react', 
         exclude: [nodeModulesPath]
       },
+	  {test:/\.(png|jpg|PNG|svg)$/,loader:'url?limit=25000'},
 	  {test: /\.css$/, loader: "style-loader!css-loader" },
 	  {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
