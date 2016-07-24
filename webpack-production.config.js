@@ -5,7 +5,7 @@ var nodeModulesPath = path.resolve(__dirname, 'node_modules');
 var TransferWebpackPlugin = require('transfer-webpack-plugin');
 
 var config = {
-  entry: [path.join(__dirname, '/src/app/app.jsx')],
+  entry: [path.join(__dirname, '/src/app.js')],
   resolve: {
     //When require, do not have to add these extensions to file's name
     extensions: ["", ".js", ".jsx"]
@@ -34,22 +34,20 @@ var config = {
     ], path.resolve(__dirname,"src"))
   ],
   module: {
-    preLoaders: [
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'eslint-loader',
-        include: [path.resolve(__dirname, "src/app")],
-        exclude: [nodeModulesPath]
-      },
-    ],
-    loaders: [
-      {
-        test: /\.(js|jsx)$/, //All .js and .jsx files
-        loaders: ['babel'], //react-hot is like browser sync and babel loads jsx and es6-7
-        exclude: [nodeModulesPath]
-      }
-    ]
-  },
+	    loaders: [
+	      {
+	        test: /\.(js|jsx)$/, 
+	        loader:'babel-loader?presets[]=es2015&presets[]=react', 
+	        exclude: [nodeModulesPath]
+	      },
+		  {test:/\.(png|jpg|PNG|svg)$/,loader:'url?limit=25000'},
+		  {test: /\.css$/, loader: "style-loader!css-loader" },
+		  {test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff'},
+	      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream'},
+	      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+	      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml'}
+	    ]
+	  }
 };
 
 module.exports = config;

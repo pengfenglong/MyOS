@@ -1,5 +1,4 @@
-{
-"apps": [{
+var apps = [{
 			"code": "sinanews",
 			"name": "新浪新闻",
 			"icon": "sina.png",
@@ -142,7 +141,6 @@
 			"name": "历史上的今天",
 			"icon": "icon114(4).png",
 			"url": "http://m.46644.com/todayhistory/"
-		}],
-		"success":true
+		}];
 		
-}
+module.exports = apps;

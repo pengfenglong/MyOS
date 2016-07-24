@@ -23,7 +23,7 @@ var config = {
     hot: true,        //Live-reload
     inline: true,
     port: 3000,        //Port Number
-    host: '192.168.1.101'  //Change to '0.0.0.0' for external facing server
+    host: 'localhost'  //Change to '0.0.0.0' for external facing server
   },
   devtool: 'eval',
   output: {
